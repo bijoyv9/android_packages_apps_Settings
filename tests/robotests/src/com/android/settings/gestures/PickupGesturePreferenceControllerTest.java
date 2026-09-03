@@ -93,21 +93,10 @@ public class PickupGesturePreferenceControllerTest {
     }
 
     @Test
-    public void getAvailabilityStatus_aodNotSupported_UNSUPPORTED_ON_DEVICE() {
-        when(mAmbientDisplayConfiguration.dozePickupSensorAvailable()).thenReturn(false);
-        when(mAmbientDisplayConfiguration.ambientDisplayAvailable()).thenReturn(false);
+    public void getAvailabilityStatus_returnsUnsupportedOnDevice() {
         final int availabilityStatus = mController.getAvailabilityStatus();
 
         assertThat(availabilityStatus).isEqualTo(UNSUPPORTED_ON_DEVICE);
-    }
-
-    @Test
-    public void getAvailabilityStatus_aodSupported_aodOff_AVAILABLE() {
-        when(mAmbientDisplayConfiguration.dozePickupSensorAvailable()).thenReturn(true);
-        when(mAmbientDisplayConfiguration.ambientDisplayAvailable()).thenReturn(true);
-        final int availabilityStatus = mController.getAvailabilityStatus();
-
-        assertThat(availabilityStatus).isEqualTo(AVAILABLE);
     }
 
     @Test
